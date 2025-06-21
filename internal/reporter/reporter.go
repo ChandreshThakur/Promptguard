@@ -7,11 +7,10 @@ import (
 	"html/template"
 	"os"
 	"path/filepath"
-	"strings"
-	"time"
+	"strings"	"time"
 
-	"promptguard/internal/runner"
-	"promptguard/internal/diff"
+	"promptgaurd/internal/runner"
+	"promptgaurd/internal/diff"
 )
 
 // Reporter interface for different output formats

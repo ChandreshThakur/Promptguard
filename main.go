@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"promptguard/cmd"
+	"promptgaurd/cmd"
 )
 
 func main() {

@@ -7,9 +7,8 @@ import (
 	"os"
 	"path/filepath"
 	"time"
-
 	_ "github.com/mattn/go-sqlite3"
-	"promptguard/internal/runner"
+	"promptgaurd/internal/runner"
 )
 
 // Store handles metrics storage and retrieval

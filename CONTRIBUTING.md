@@ -1,6 +1,6 @@
-# Contributing to PromptGuard
+# Contributing to PromptGaurd by Chandresh
 
-Thank you for your interest in contributing to PromptGuard! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to PromptGaurd by Chandresh! This document provides guidelines and information for contributors.
 
 ## 🚀 Getting Started
 
@@ -12,9 +12,8 @@ Thank you for your interest in contributing to PromptGuard! This document provid
 ### Development Setup
 1. Fork the repository
 2. Clone your fork:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/promptguard.git
-   cd promptguard
+   ```bash   git clone https://github.com/YOUR_USERNAME/promptgaurd.git
+   cd promptgaurd
    ```
 3. Install dependencies:
    ```bash

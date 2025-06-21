@@ -3,14 +3,13 @@ package runner
 import (
 	"context"
 	"fmt"
-	"sync"
-	"time"
+	"sync"	"time"
 
-	"promptguard/internal/config"
-	"promptguard/internal/prompts"
-	"promptguard/internal/providers"
-	"promptguard/internal/assertions"
-	"promptguard/internal/metrics"
+	"promptgaurd/internal/config"
+	"promptgaurd/internal/prompts"
+	"promptgaurd/internal/providers"
+	"promptgaurd/internal/assertions"
+	"promptgaurd/internal/metrics"
 )
 
 // Runner orchestrates prompt testing

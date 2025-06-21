@@ -1,4 +1,4 @@
-module promptguard
+module promptgaurd
 
 go 1.21
 

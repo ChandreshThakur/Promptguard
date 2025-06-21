@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"os"
 	"time"
-
 	"github.com/spf13/cobra"
-	"promptguard/internal/config"
-	"promptguard/internal/runner"
-	"promptguard/internal/reporter"
+	"promptgaurd/internal/config"
+	"promptgaurd/internal/runner"
+	"promptgaurd/internal/reporter"
 )
 
 var (

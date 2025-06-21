@@ -3,11 +3,10 @@ package providers
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"net/http"
+	"fmt"	"net/http"
 	"strings"
 
-	"promptguard/internal/config"
+	"promptgaurd/internal/config"
 )
 
 // OllamaClient implements the Ollama provider for local models

@@ -6,9 +6,8 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
-
 	"github.com/spf13/cobra"
-	"promptguard/internal/viewer"
+	"promptgaurd/internal/viewer"
 )
 
 var (

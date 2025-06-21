@@ -3,9 +3,8 @@ package diff
 import (
 	"fmt"
 	"strings"
-
 	"github.com/sergi/go-diff/diffmatchpatch"
-	"promptguard/internal/runner"
+	"promptgaurd/internal/runner"
 )
 
 // MarkdownDiffer generates markdown-formatted diffs for failed assertions

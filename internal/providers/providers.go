@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
 	"github.com/sashabaranov/go-openai"
-	"promptguard/internal/config"
+	"promptgaurd/internal/config"
 )
 
 // Response represents a provider response

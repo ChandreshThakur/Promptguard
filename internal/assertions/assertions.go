@@ -3,12 +3,11 @@ package assertions
 import (
 	"encoding/json"
 	"fmt"
-	"regexp"
-	"strings"
+	"regexp"	"strings"
 
-	"promptguard/internal/config"
-	"promptguard/internal/providers"
-	"promptguard/internal/runner"
+	"promptgaurd/internal/config"
+	"promptgaurd/internal/providers"
+	"promptgaurd/internal/runner"
 )
 
 // Evaluator interface for different assertion types

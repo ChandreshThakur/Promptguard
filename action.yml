@@ -1,10 +1,9 @@
-name: 'PromptGuard'
-description: 'Run PromptGuard tests in CI/CD pipeline'
-author: 'PromptGuard Team'
+name: 'PromptGaurd by Chandresh'
+description: 'Run PromptGaurd by Chandresh tests in CI/CD pipeline'
+author: 'Chandresh'
 
-inputs:
-  config-file:
-    description: 'Path to PromptGuard configuration file'
+inputs:  config-file:
+    description: 'Path to PromptGaurd by Chandresh configuration file'
     required: false
     default: 'promptguard.yaml'
   
@@ -38,22 +37,20 @@ inputs:
 outputs:
   test-results:
     description: 'Test results summary'
-  
-  badge-url:
-    description: 'PromptGuard badge URL'
+    badge-url:
+    description: 'PromptGaurd by Chandresh badge URL'
   
   artifacts-path:
     description: 'Path to generated artifacts'
 
 runs:
   using: 'composite'
-  steps:
-    - name: Setup PromptGuard
+  steps:    - name: Setup PromptGaurd by Chandresh
       shell: bash
       run: |
-        echo "Setting up PromptGuard..."
+        echo "Setting up PromptGaurd by Chandresh..."
         
-        # Download PromptGuard binary
+        # Download PromptGaurd by Chandresh binary
         if [[ "${{ runner.os }}" == "Linux" ]]; then
           ARCH="linux-amd64"
         elif [[ "${{ runner.os }}" == "macOS" ]]; then
@@ -64,9 +61,8 @@ runs:
           echo "Unsupported OS: ${{ runner.os }}"
           exit 1
         fi
-        
-        # For now, we'll build from source (in a real release, this would download a binary)
-        echo "Building PromptGuard from source..."
+          # For now, we'll build from source (in a real release, this would download a binary)
+        echo "Building PromptGaurd by Chandresh from source..."
         go build -o pg main.go
         chmod +x pg
         
@@ -88,7 +84,7 @@ runs:
           echo "MISTRAL_API_KEY=${{ inputs.mistral-api-key }}" >> $GITHUB_ENV
         fi
 
-    - name: Run PromptGuard Tests
+    - name: Run PromptGaurd by Chandresh Tests
       shell: bash
       run: |
         ./pg ci \

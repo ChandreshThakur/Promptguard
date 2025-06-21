@@ -3,10 +3,9 @@ package cmd
 import (
 	"fmt"
 	"os"
-
 	"github.com/spf13/cobra"
-	"promptguard/internal/runner"
-	"promptguard/internal/diff"
+	"promptgaurd/internal/runner"
+	"promptgaurd/internal/diff"
 	"encoding/json"
 )
 

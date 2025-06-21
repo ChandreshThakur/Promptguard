@@ -9,11 +9,10 @@ import (
 )
 
 var (
-	cfgFile string
-	rootCmd = &cobra.Command{
+	cfgFile string	rootCmd = &cobra.Command{
 		Use:   "pg",
-		Short: "PromptGuard - Continuous Integration Tests for LLM Prompts",
-		Long: `PromptGuard is a testing framework for LLM prompts that ensures
+		Short: "PromptGaurd by Chandresh - Continuous Integration Tests for LLM Prompts",
+		Long: `PromptGaurd by Chandresh is a testing framework for LLM prompts that ensures
 regressions in wording, temperature, or model version break the build
 before they reach production.
 

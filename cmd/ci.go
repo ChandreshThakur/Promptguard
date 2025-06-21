@@ -3,12 +3,11 @@ package cmd
 import (
 	"fmt"
 	"os"
-
 	"github.com/spf13/cobra"
-	"promptguard/internal/config"
-	"promptguard/internal/runner"
-	"promptguard/internal/reporter"
-	"promptguard/internal/github"
+	"promptgaurd/internal/config"
+	"promptgaurd/internal/runner"
+	"promptgaurd/internal/reporter"
+	"promptgaurd/internal/github"
 )
 
 var (
