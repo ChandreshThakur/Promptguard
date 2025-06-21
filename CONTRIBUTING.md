@@ -12,8 +12,8 @@ Thank you for your interest in contributing to PromptGaurd by Chandresh! This do
 ### Development Setup
 1. Fork the repository
 2. Clone your fork:
-   ```bash   git clone https://github.com/YOUR_USERNAME/promptgaurd.git
-   cd promptgaurd
+   ```bash   git clone https://github.com/YOUR_USERNAME/promptguard.git
+   cd promptguard
    ```
 3. Install dependencies:
    ```bash

@@ -1,6 +1,6 @@
 # PromptGaurd by Chandresh
 
-[![PromptGaurd](https://img.shields.io/badge/PromptGaurd-passing-brightgreen)](https://github.com/chandresh/promptgaurd)
+[![PromptGaurd](https://img.shields.io/badge/PromptGaurd-passing-brightgreen)](https://github.com/promptguard/promptguard)
 [![Go Version](https://img.shields.io/badge/go-1.21+-blue)](https://go.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -24,7 +24,7 @@ tests: [{vars: {user: 'Alice'}, assert: [{type: 'cost', threshold: 0.01}]}]" > p
 pg test
 
 # 3. Add to GitHub Actions
-- uses: chandresh/promptgaurd@v1
+- uses: promptguard/run@v1
   with:
     openai-api-key: ${{ secrets.OPENAI_API_KEY }}
 ```
@@ -48,17 +48,17 @@ pg test
 **Option 1: Download Binary**
 ```bash
 # Linux/macOS
-curl -L https://github.com/chandresh/promptgaurd/releases/latest/download/pg-linux-amd64 -o pg
+curl -L https://github.com/promptguard/promptguard/releases/latest/download/pg-linux-amd64 -o pg
 chmod +x pg
 
 # Windows
-curl -L https://github.com/chandresh/promptgaurd/releases/latest/download/pg-windows-amd64.exe -o pg.exe
+curl -L https://github.com/promptguard/promptguard/releases/latest/download/pg-windows-amd64.exe -o pg.exe
 ```
 
 **Option 2: Install from Source**
 ```bash
-git clone https://github.com/chandresh/promptgaurd.git
-cd promptgaurd
+git clone https://github.com/promptguard/promptguard.git
+cd promptguard
 go build -o pg main.go
 ```
 
