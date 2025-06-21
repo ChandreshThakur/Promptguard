@@ -1,0 +1,64 @@
+{
+    "total": 4,
+    "passed": 3,
+    "failed": 1,
+    "skipped": 0,
+    "totalCost": 0.0234,
+    "duration": 2300000000,
+    "testResults": [
+        {
+            "name": "onboard-pro-plan",
+            "promptFile": "prompts/onboard.prompt",
+            "provider": "openai:gpt-4o",
+            "variables": {
+                "customer": "Alice Johnson",
+                "product": "Pro Plan",
+                "features": [
+                    "Advanced analytics",
+                    "API access",
+                    "Priority support"
+                ]
+            },
+            "response": "{\n  \"welcome_message\": \"Welcome Alice Johnson to your Pro Plan! We're excited to help you unlock advanced capabilities.\",\n  \"upgrade_benefits\": [\"Advanced analytics dashboard\", \"Full API access\", \"Priority customer support\"],\n  \"next_steps\": [\"Complete your profile setup\", \"Explore the analytics dashboard\", \"Review API documentation\"],\n  \"support_info\": \"Contact our priority support team at support@example.com or through the in-app chat.\"\n}",
+            "assertions": [
+                {
+                    "type": "answer-relevance",
+                    "expected": "Mention Pro Plan upgrade path and benefits",
+                    "actual": "{\n  \"welcome_message\": \"Welcome Alice Johnson to your Pro Plan! We're excited to help you unlock advanced capabilities.\",\n  \"upgrade_benefits\": [\"Advanced analytics dashboard\", \"Full API access\", \"Priority customer support\"],\n  \"next_steps\": [\"Complete your profile setup\", \"Explore the analytics dashboard\", \"Review API documentation\"],\n  \"support_info\": \"Contact our priority support team at support@example.com or through the in-app chat.\"\n}",
+                    "passed": true,
+                    "score": 0.85,
+                    "message": "Relevance score: 0.85 (threshold: 0.70)"
+                },
+                {
+                    "type": "cost",
+                    "expected": 0.003,
+                    "actual": 0.0021,
+                    "passed": true,
+                    "message": "Cost: $0.0021 (threshold: $0.0030)"
+                },
+                {
+                    "type": "contains-json",
+                    "expected": {
+                        "type": "object",
+                        "required": [
+                            "welcome_message",
+                            "next_steps",
+                            "upgrade_benefits"
+                        ]
+                    },
+                    "actual": "{\n  \"welcome_message\": \"Welcome Alice Johnson to your Pro Plan! We're excited to help you unlock advanced capabilities.\",\n  \"upgrade_benefits\": [\"Advanced analytics dashboard\", \"Full API access\", \"Priority customer support\"],\n  \"next_steps\": [\"Complete your profile setup\", \"Explore the analytics dashboard\", \"Review API documentation\"],\n  \"support_info\": \"Contact our priority support team at support@example.com or through the in-app chat.\"\n}",
+                    "passed": true,
+                    "message": "Valid JSON found"
+                }
+            ],
+            "cost": 0.0021,
+            "duration": 850000000,
+            "status": "passed"
+        }
+    ],
+    "metadata": {
+        "timestamp": "2024-12-21T10:30:00Z",
+        "commitSha": "abc123def456",
+        "version": "0.1.0"
+    }
+}

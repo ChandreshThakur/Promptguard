@@ -1,0 +1,132 @@
+name: 'PromptGuard'
+description: 'Run PromptGuard tests in CI/CD pipeline'
+author: 'PromptGuard Team'
+
+inputs:
+  config-file:
+    description: 'Path to PromptGuard configuration file'
+    required: false
+    default: 'promptguard.yaml'
+  
+  openai-api-key:
+    description: 'OpenAI API key'
+    required: false
+  
+  anthropic-api-key:
+    description: 'Anthropic API key'
+    required: false
+  
+  mistral-api-key:
+    description: 'Mistral API key'
+    required: false
+  
+  baseline-path:
+    description: 'Path to baseline results file'
+    required: false
+    default: '.promptguard/baseline.json'
+  
+  artifacts-dir:
+    description: 'Directory for CI artifacts'
+    required: false
+    default: 'artifacts'
+  
+  fail-on-regression:
+    description: 'Fail the build on test regressions'
+    required: false
+    default: 'true'
+
+outputs:
+  test-results:
+    description: 'Test results summary'
+  
+  badge-url:
+    description: 'PromptGuard badge URL'
+  
+  artifacts-path:
+    description: 'Path to generated artifacts'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup PromptGuard
+      shell: bash
+      run: |
+        echo "Setting up PromptGuard..."
+        
+        # Download PromptGuard binary
+        if [[ "${{ runner.os }}" == "Linux" ]]; then
+          ARCH="linux-amd64"
+        elif [[ "${{ runner.os }}" == "macOS" ]]; then
+          ARCH="darwin-amd64"
+        elif [[ "${{ runner.os }}" == "Windows" ]]; then
+          ARCH="windows-amd64.exe"
+        else
+          echo "Unsupported OS: ${{ runner.os }}"
+          exit 1
+        fi
+        
+        # For now, we'll build from source (in a real release, this would download a binary)
+        echo "Building PromptGuard from source..."
+        go build -o pg main.go
+        chmod +x pg
+        
+        # Add to PATH
+        echo "${{ github.workspace }}" >> $GITHUB_PATH
+
+    - name: Set API Keys
+      shell: bash
+      run: |
+        if [[ -n "${{ inputs.openai-api-key }}" ]]; then
+          echo "OPENAI_API_KEY=${{ inputs.openai-api-key }}" >> $GITHUB_ENV
+        fi
+        
+        if [[ -n "${{ inputs.anthropic-api-key }}" ]]; then
+          echo "ANTHROPIC_API_KEY=${{ inputs.anthropic-api-key }}" >> $GITHUB_ENV
+        fi
+        
+        if [[ -n "${{ inputs.mistral-api-key }}" ]]; then
+          echo "MISTRAL_API_KEY=${{ inputs.mistral-api-key }}" >> $GITHUB_ENV
+        fi
+
+    - name: Run PromptGuard Tests
+      shell: bash
+      run: |
+        ./pg ci \
+          --config="${{ inputs.config-file }}" \
+          --baseline-path="${{ inputs.baseline-path }}" \
+          --artifacts-dir="${{ inputs.artifacts-dir }}" \
+          --commit-sha="${{ github.sha }}" \
+          --pr-number="${{ github.event.number }}" \
+          --github-annotations=true \
+          --update-badge=true
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: promptguard-results
+        path: ${{ inputs.artifacts-dir }}/
+        retention-days: 30
+
+    - name: Comment on PR
+      uses: actions/github-script@v7
+      if: github.event_name == 'pull_request' && always()
+      with:
+        script: |
+          const fs = require('fs');
+          const path = '${{ inputs.artifacts-dir }}/report.md';
+          
+          if (fs.existsSync(path)) {
+            const report = fs.readFileSync(path, 'utf8');
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+          }
+
+branding:
+  icon: 'shield'
+  color: 'blue'
